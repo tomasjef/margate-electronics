@@ -23,21 +23,17 @@ function loadAudioFiles() {
     
     audioFiles.forEach(file => {
         const fileContainer = document.createElement('div'); // Create a container for each file
-        const link = document.createElement('a');  // Create a link for the audio file
-        
-        link.href = baseUrl + file;  // Set the link to the audio file URL
-        link.textContent = file;  // Set the text to the file name
-        link.target = '_blank'; // Opens the audio file in a new tab when clicked
 
         // Create an audio player with controls
         const audioPlayer = document.createElement('audio');
         audioPlayer.controls = true; // Add controls to the audio player
         audioPlayer.src = baseUrl + file;
+        audioPlayer.setAttribute('disabledownload', 'true'); // Prevent download
+        audioPlayer.setAttribute('type', 'audio/mp3'); // Set the type of the file
         
-        // Append the audio player and file link to the container
+        // Append the audio player to the container
         fileContainer.appendChild(audioPlayer);
-        fileContainer.appendChild(link);
-        
+
         // Add the file container to the main container
         container.appendChild(fileContainer);
     });
@@ -46,7 +42,6 @@ function loadAudioFiles() {
 // Load the audio files when the page is loaded
 window.onload = loadAudioFiles;
 </script>
-  
 <div id="audio-container"></div> <!-- This is where the audio players will be inserted -->
 <p><a href="admin.html">Admin Upload</a></p>
 </body>
