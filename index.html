@@ -3,81 +3,87 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Margate Audio Archive</title>
+  <title>Margate Electronics Recordings Archive</title>
+  <link rel="stylesheet" href="style.css" />
   <style>
     body {
       font-family: sans-serif;
-      background: #f4f4f4;
-      padding: 40px;
+      background: #f9f9f9;
+      padding: 2rem;
+      color: #111;
     }
-
     .track {
-      margin-bottom: 40px;
+      margin-bottom: 3rem;
     }
-
-    .track h2 {
-      margin-bottom: 10px;
-      font-size: 1.1em;
+    .waveform {
+      margin-top: 1rem;
+      height: 80px;
+      background: #eee;
+      border-radius: 8px;
     }
-
     button {
-      margin-top: 10px;
-      padding: 6px 14px;
+      margin-top: 0.5rem;
+      padding: 0.5rem 1rem;
       background: #000;
       color: #fff;
       border: none;
+      border-radius: 6px;
       cursor: pointer;
     }
-
     button:hover {
-      background: #333;
+      background: #444;
     }
   </style>
 </head>
 <body>
 
   <h1>Margate Audio Archive</h1>
-  <div id="audio-container" class="archive"></div>
 
-  <!-- WaveSurfer CDN -->
+  <div class="track">
+    <h2>CPB_ME1_4416</h2>
+    <div id="waveform1" class="waveform"></div>
+    <button onclick="wavesurfer1.playPause()">Play/Pause</button>
+  </div>
+
+  <div class="track">
+    <h2>TomasJef_ME2_4416</h2>
+    <div id="waveform2" class="waveform"></div>
+    <button onclick="wavesurfer2.playPause()">Play/Pause</button>
+  </div>
+
+  <div class="track">
+    <h2>KMBN_ME2_4416</h2>
+    <div id="waveform3" class="waveform"></div>
+    <button onclick="wavesurfer3.playPause()">Play/Pause</button>
+  </div>
+
   <script src="https://unpkg.com/wavesurfer.js"></script>
-
   <script>
-    const audioFiles = [
-      { filename: 'CPB_ME1_4416.mp3', label: 'CPB – ME1' },
-      { filename: 'TomasJef_ME2_4416.mp3', label: 'Tomas Jef – ME2' },
-      { filename: 'KMBN_ME2_4416.mp3', label: 'KMBN – ME2' }
-    ];
+    const wavesurfer1 = WaveSurfer.create({
+      container: '#waveform1',
+      waveColor: '#ccc',
+      progressColor: '#000',
+      backend: 'MediaElement',
+      height: 80,
+      url: 'https://f003.backblazeb2.com/file/archivalrecs/CPB_ME1_4416.mp3'
+    });
 
-    const baseUrl = 'https://f003.backblazeb2.com/file/archivalrecs/';
-    const container = document.getElementById('audio-container');
+    const wavesurfer2 = WaveSurfer.create({
+      container: '#waveform2',
+      waveColor: '#ccc',
+      progressColor: '#000',
+      backend: 'MediaElement',
+      height: 80,
+      url: 'https://f003.backblazeb2.com/file/archivalrecs/TomasJef_ME2_4416.mp3'
+    });
 
-    audioFiles.forEach((file, index) => {
-      const waveformId = `waveform-${index}`;
-      const buttonId = `button-${index}`;
-
-      const trackDiv = document.createElement('div');
-      trackDiv.classList.add('track');
-      trackDiv.innerHTML = `
-        <h2>${file.label}</h2>
-        <div id="${waveformId}"></div>
-        <button id="${buttonId}">Play/Pause</button>
-      `;
-      container.appendChild(trackDiv);
-
-      const wavesurfer = WaveSurfer.create({
-        container: `#${waveformId}`,
-        waveColor: '#ccc',
-        progressColor: '#000',
-        height: 80,
-        responsive: true,
-      });
-
-      wavesurfer.load(baseUrl + file.filename);
-
-      document.getElementById(buttonId).addEventListener('click', () => {
-        wavesurfer.playPause();
-      });
+    const wavesurfer3 = WaveSurfer.create({
+      container: '#waveform3',
+      waveColor: '#ccc',
+      progressColor: '#000',
+      backend: 'MediaElement',
+      height: 80,
+      url: 'https://f003.backblazeb2.com/file/archivalrecs/KMBN_ME2_4416.mp3'
     });
   </script>
 
