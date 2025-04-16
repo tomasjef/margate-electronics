@@ -8,41 +8,46 @@
 </head>
 <body>
   <h1>Margate Audio Archive</h1>
- <script>
-// List of audio file names
-const audioFiles = [
-    'CPB_ME1_4416.mp3','TomasJef_ME2_4416.mp3', 'KMBN_ME2_4416.mp3'  // Add more filenames here as needed
-];
+  <div id="audio-container"></div>
+<script src="https://unpkg.com/wavesurfer.js"></script>
+<script>
+  const audioFiles = [
+    'CPB_ME1_4416.mp3','TomasJef_ME2_4416.mp3', 'KMBN_ME2_4416.mp3'
+    // Add more filenames here if needed
+  ];
 
-// Base URL for Backblaze B2
-const baseUrl = 'https://f003.backblazeb2.com/file/archivalrecs/';
+  const baseUrl = 'https://f003.backblazeb2.com/file/archivalrecs/';
+  const container = document.getElementById('audio-container');
 
-// Function to dynamically create the audio elements
-function loadAudioFiles() {
-    const container = document.getElementById('audio-container'); // The container where audio files will go
-    
-    audioFiles.forEach(file => {
-        const fileContainer = document.createElement('div'); // Create a container for each file
+  audioFiles.forEach((file, index) => {
+    // Create unique IDs for each waveform and button
+    const waveformId = `waveform-${index}`;
+    const buttonId = `button-${index}`;
 
-        // Create an audio player with controls
-        const audioPlayer = document.createElement('audio');
-        audioPlayer.controls = true; // Add controls to the audio player
-        audioPlayer.src = baseUrl + file;
-        audioPlayer.setAttribute('disabledownload', 'true'); // Prevent download
-        audioPlayer.setAttribute('type', 'audio/mp3'); // Set the type of the file
-        
-        // Append the audio player to the container
-        fileContainer.appendChild(audioPlayer);
+    // Create a wrapper for each audio player
+    const playerWrapper = document.createElement('div');
+    playerWrapper.innerHTML = `
+      <div id="${waveformId}" style="width: 100%; height: 100px;"></div>
+      <button id="${buttonId}">Play/Pause</button>
+    `;
+    container.appendChild(playerWrapper);
 
-        // Add the file container to the main container
-        container.appendChild(fileContainer);
+    // Initialize WaveSurfer for this file
+    const wavesurfer = WaveSurfer.create({
+      container: `#${waveformId}`,
+      waveColor: '#ccc',
+      progressColor: '#000',
+      height: 80,
+      responsive: true,
+      url: baseUrl + file
     });
-}
 
-// Load the audio files when the page is loaded
-window.onload = loadAudioFiles;
+    // Hook up play/pause button
+    document.getElementById(buttonId).addEventListener('click', () => {
+      wavesurfer.playPause();
+    });
+  });
 </script>
-<div id="audio-container"></div> <!-- This is where the audio players will be inserted -->
 <p><a href="admin.html">Admin Upload</a></p>
 </body>
 </html>
