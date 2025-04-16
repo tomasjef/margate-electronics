@@ -8,7 +8,7 @@
 </head>
 <body>
   <h1>Margate Audio Archive</h1>
-  <script>
+ <script>
 // List of audio file names
 const audioFiles = [
     'CPB_ME1_4416.mp3','TomasJef_ME2_4416.mp3', 'KMBN_ME2_4416.mp3'  // Add more filenames here as needed
@@ -17,37 +17,37 @@ const audioFiles = [
 // Base URL for Backblaze B2
 const baseUrl = 'https://f003.backblazeb2.com/file/archivalrecs/';
 
-// Function to dynamically create the list of audio files
+// Function to dynamically create the audio elements
 function loadAudioFiles() {
-    const audioList = document.getElementById('audio-list'); // Assuming you have an element with id "audio-list"
+    const container = document.getElementById('audio-container'); // The container where audio files will go
     
     audioFiles.forEach(file => {
-        const listItem = document.createElement('li');  // Create list item for each audio file
+        const fileContainer = document.createElement('div'); // Create a container for each file
         const link = document.createElement('a');  // Create a link for the audio file
         
         link.href = baseUrl + file;  // Set the link to the audio file URL
         link.textContent = file;  // Set the text to the file name
-        
-        // Optionally, create an audio player
+        link.target = '_blank'; // Opens the audio file in a new tab when clicked
+
+        // Create an audio player with controls
         const audioPlayer = document.createElement('audio');
         audioPlayer.controls = true; // Add controls to the audio player
         audioPlayer.src = baseUrl + file;
         
-        // Append the audio player and file link to the list item
-        listItem.appendChild(audioPlayer);
-        listItem.appendChild(link);
+        // Append the audio player and file link to the container
+        fileContainer.appendChild(audioPlayer);
+        fileContainer.appendChild(link);
         
-        // Add the list item to the audio list
-        audioList.appendChild(listItem);
+        // Add the file container to the main container
+        container.appendChild(fileContainer);
     });
 }
 
 // Load the audio files when the page is loaded
 window.onload = loadAudioFiles;
 </script>
-
-    <p><a href="admin.html">Admin Upload</a></p>
-
   
+<div id="audio-container"></div> <!-- This is where the audio players will be inserted -->
+<p><a href="admin.html">Admin Upload</a></p>
 </body>
 </html>
