@@ -1,20 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Upload Audio Set</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+    <script>
+        // Prompt for password when accessing the page
+        const password = prompt("Enter password:");
+
+        // Check if the password is correct
+        if (password !== "your_password") {
+            // If incorrect, alert the user and redirect to the homepage
+            alert("Incorrect password!");
+            window.location.href = "/";
+        }
+    </script>
 </head>
 <body>
-  <h1>Upload New Audio Set</h1>
-  <form id="uploadForm">
-    <label>Set Title:<input type="text" name="title" required /></label>
-    <label>Description:<textarea name="description" rows="4" required></textarea></label>
-    <label>Audio File:<input type="file" name="file" accept="audio/*" required /></label>
-    <button type="submit">Upload</button>
-  </form>
-  <div class="message" id="message"></div>
-  <script src="upload.js"></script>
+    <h1>Welcome to the Admin Page</h1>
+    <p>Content for administrators only.</p>
+    <!-- Admin interface for uploading or managing content can go here -->
+    <form action="upload" method="POST" enctype="multipart/form-data">
+        <label for="file">Upload Audio Set:</label>
+        <input type="file" id="file" name="file" accept="audio/*" required>
+        <br>
+        <button type="submit">Upload</button>
+    </form>
 </body>
 </html>
