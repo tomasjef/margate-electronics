@@ -1,74 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Audio Archive</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Margate Audio Archive</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f4f4f4;
+      padding: 40px;
+    }
+
+    .track {
+      margin-bottom: 40px;
+    }
+
+    .track h2 {
+      margin-bottom: 10px;
+      font-size: 1.1em;
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 6px 14px;
+      background: #000;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #333;
+    }
+  </style>
 </head>
 <body>
+
   <h1>Margate Audio Archive</h1>
-  <div id="audio-container"></div>
-<script src="https://unpkg.com/wavesurfer.js"></script>
-<script>
-  const audioFiles = [
-    'CPB_ME1_4416.mp3','TomasJef_ME2_4416.mp3', 'KMBN_ME2_4416.mp3'
-    // Add more filenames here if needed
-  ];
+  <div id="audio-container" class="archive"></div>
 
-  const baseUrl = 'https://f003.backblazeb2.com/file/archivalrecs/';
-  const container = document.getElementById('audio-container');
+  <!-- WaveSurfer CDN -->
+  <script src="https://unpkg.com/wavesurfer.js"></script>
 
-  audioFiles.forEach((file, index) => {
-    // Create unique IDs for each waveform and button
-    const waveformId = `waveform-${index}`;
-    const buttonId = `button-${index}`;
+  <script>
+    const audioFiles = [
+      { filename: 'CPB_ME1_4416.mp3', label: 'CPB – ME1' },
+      { filename: 'TomasJef_ME2_4416.mp3', label: 'Tomas Jef – ME2' },
+      { filename: 'KMBN_ME2_4416.mp3', label: 'KMBN – ME2' }
+    ];
 
-    // Create a wrapper for each audio player
-    const playerWrapper = document.createElement('div');
-    playerWrapper.innerHTML = `
-      <div id="${waveformId}" style="width: 100%; height: 100px;"></div>
-      <button id="${buttonId}">Play/Pause</button>
-    `;
-    container.appendChild(playerWrapper);
+    const baseUrl = 'https://f003.backblazeb2.com/file/archivalrecs/';
+    const container = document.getElementById('audio-container');
 
-    // Initialize WaveSurfer for this file
-    const wavesurfer = WaveSurfer.create({
-      container: `#${waveformId}`,
-      waveColor: '#ccc',
-      progressColor: '#000',
-      height: 80,
-      responsive: true,
-      url: baseUrl + file
+    audioFiles.forEach((file, index) => {
+      const waveformId = `waveform-${index}`;
+      const buttonId = `button-${index}`;
+
+      const trackDiv = document.createElement('div');
+      trackDiv.classList.add('track');
+      trackDiv.innerHTML = `
+        <h2>${file.label}</h2>
+        <div id="${waveformId}"></div>
+        <button id="${buttonId}">Play/Pause</button>
+      `;
+      container.appendChild(trackDiv);
+
+      const wavesurfer = WaveSurfer.create({
+        container: `#${waveformId}`,
+        waveColor: '#ccc',
+        progressColor: '#000',
+        height: 80,
+        responsive: true,
+      });
+
+      wavesurfer.load(baseUrl + file.filename);
+
+      document.getElementById(buttonId).addEventListener('click', () => {
+        wavesurfer.playPause();
+      });
     });
+  </script>
 
-    // Hook up play/pause button
-    document.getElementById(buttonId).addEventListener('click', () => {
-      wavesurfer.playPause();
-    });
-  });
-</script>
-<p><a href="admin.html">Admin Upload</a></p>
-  <style>
-  #audio-container {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    padding: 20px;
-  }
-
-  button {
-    margin-top: 10px;
-    padding: 6px 12px;
-    border: none;
-    background: #000;
-    color: #fff;
-    cursor: pointer;
-  }
-
-  button:hover {
-    background: #444;
-  }
-</style>
 </body>
 </html>
