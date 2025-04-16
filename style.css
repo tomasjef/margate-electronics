@@ -31,3 +31,33 @@ button {
   cursor: pointer;
   border-radius: 4px;
 }
+#audio-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Space between each audio player */
+    margin: 20px;
+}
+
+#audio-container div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+#audio-container a {
+    margin-top: 10px;
+    text-decoration: none;
+    color: #333;
+}
+
+#audio-container a:hover {
+    color: #007BFF;
+    text-decoration: underline;
+}
+
+audio {
+    width: 100%;
+    max-width: 500px; /* Limit the width of the audio players */
+    margin-bottom: 10px;
+}
