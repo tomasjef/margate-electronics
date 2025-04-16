@@ -13,5 +13,46 @@
     Your browser does not support the audio element.
   </audio>
   <p><a href="admin.html">Admin Upload</a></p>
+
+  <script>
+// List of audio file names
+const audioFiles = [
+    'CPB_ME1_4416.mp3','TomasJef_ME2_4416.mp3', 'KMBN_ME2_4416.mp3'  // Add more filenames here as needed
+];
+
+// Base URL for Backblaze B2
+const baseUrl = 'https://f003.backblazeb2.com/file/archivalrecs/';
+
+// Function to dynamically create the list of audio files
+function loadAudioFiles() {
+    const audioList = document.getElementById('audio-list'); // Assuming you have an element with id "audio-list"
+    
+    audioFiles.forEach(file => {
+        const listItem = document.createElement('li');  // Create list item for each audio file
+        const link = document.createElement('a');  // Create a link for the audio file
+        
+        link.href = baseUrl + file;  // Set the link to the audio file URL
+        link.textContent = file;  // Set the text to the file name
+        
+        // Optionally, create an audio player
+        const audioPlayer = document.createElement('audio');
+        audioPlayer.controls = true; // Add controls to the audio player
+        audioPlayer.src = baseUrl + file;
+        
+        // Append the audio player and file link to the list item
+        listItem.appendChild(audioPlayer);
+        listItem.appendChild(link);
+        
+        // Add the list item to the audio list
+        audioList.appendChild(listItem);
+    });
+}
+
+// Load the audio files when the page is loaded
+window.onload = loadAudioFiles;
+</script>
+
+  <ul id="audio-list"></ul>
+  
 </body>
 </html>
