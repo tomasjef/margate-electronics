@@ -2,33 +2,35 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Margate Electronics Recordings Archive</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Margate Audio Archive</title>
   <link rel="stylesheet" href="style.css" />
   <style>
     body {
       font-family: sans-serif;
-      background: #f9f9f9;
+      background: #fff;
       padding: 2rem;
-      color: #111;
+      max-width: 700px;
+      margin: auto;
     }
     .track {
       margin-bottom: 3rem;
     }
     .waveform {
-      margin-top: 1rem;
       height: 80px;
-      background: #eee;
-      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+    .controls {
+      display: flex;
+      gap: 1rem;
     }
     button {
-      margin-top: 0.5rem;
       padding: 0.5rem 1rem;
+      border: none;
       background: #000;
       color: #fff;
-      border: none;
-      border-radius: 6px;
       cursor: pointer;
+      border-radius: 4px;
     }
     button:hover {
       background: #444;
@@ -39,53 +41,64 @@
 
   <h1>Margate Audio Archive</h1>
 
-  <div class="track">
-    <h2>CPB_ME1_4416</h2>
-    <div id="waveform1" class="waveform"></div>
-    <button onclick="wavesurfer1.playPause()">Play/Pause</button>
+  <div class="track" data-src="https://f003.backblazeb2.com/file/archivalrecs/CPB_ME1_4416.mp3">
+    <h2>CPB_ME1</h2>
+    <div class="waveform" id="waveform1"></div>
+    <div class="controls">
+      <button onclick="playTrack(0)">Play</button>
+      <button onclick="pauseTrack(0)">Pause</button>
+    </div>
   </div>
 
-  <div class="track">
-    <h2>TomasJef_ME2_4416</h2>
-    <div id="waveform2" class="waveform"></div>
-    <button onclick="wavesurfer2.playPause()">Play/Pause</button>
+  <div class="track" data-src="https://f003.backblazeb2.com/file/archivalrecs/TomasJef_ME2_4416.mp3">
+    <h2>TomasJef_ME2</h2>
+    <div class="waveform" id="waveform2"></div>
+    <div class="controls">
+      <button onclick="playTrack(1)">Play</button>
+      <button onclick="pauseTrack(1)">Pause</button>
+    </div>
   </div>
 
-  <div class="track">
-    <h2>KMBN_ME2_4416</h2>
-    <div id="waveform3" class="waveform"></div>
-    <button onclick="wavesurfer3.playPause()">Play/Pause</button>
+  <div class="track" data-src="https://f003.backblazeb2.com/file/archivalrecs/KMBN_ME2_4416.mp3">
+    <h2>KMBN_ME2</h2>
+    <div class="waveform" id="waveform3"></div>
+    <div class="controls">
+      <button onclick="playTrack(2)">Play</button>
+      <button onclick="pauseTrack(2)">Pause</button>
+    </div>
   </div>
 
-  <script src="https://unpkg.com/wavesurfer.js"></script>
+  <script src="https://unpkg.com/wavesurfer.js@7"></script>
   <script>
-    const wavesurfer1 = WaveSurfer.create({
-      container: '#waveform1',
-      waveColor: '#ccc',
-      progressColor: '#000',
-      backend: 'MediaElement',
-      height: 80,
-      url: 'https://f003.backblazeb2.com/file/archivalrecs/CPB_ME1_4416.mp3'
+    const tracks = document.querySelectorAll('.track');
+    const players = [];
+
+    tracks.forEach((track, index) => {
+      const container = track.querySelector('.waveform');
+      const url = track.dataset.src;
+
+      const ws = WaveSurfer.create({
+        container: container,
+        waveColor: '#ccc',
+        progressColor: '#000',
+        responsive: true,
+        height: 80,
+        backend: 'MediaElement',
+        partialRender: true,
+        interact: true,
+      });
+
+      ws.load(url);
+      players.push(ws);
     });
 
-    const wavesurfer2 = WaveSurfer.create({
-      container: '#waveform2',
-      waveColor: '#ccc',
-      progressColor: '#000',
-      backend: 'MediaElement',
-      height: 80,
-      url: 'https://f003.backblazeb2.com/file/archivalrecs/TomasJef_ME2_4416.mp3'
-    });
+    function playTrack(index) {
+      players[index].play();
+    }
 
-    const wavesurfer3 = WaveSurfer.create({
-      container: '#waveform3',
-      waveColor: '#ccc',
-      progressColor: '#000',
-      backend: 'MediaElement',
-      height: 80,
-      url: 'https://f003.backblazeb2.com/file/archivalrecs/KMBN_ME2_4416.mp3'
-    });
+    function pauseTrack(index) {
+      players[index].pause();
+    }
   </script>
-
 </body>
 </html>
