@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Page</title>
-    <link rel="stylesheet" href="style.css"> <!-- Add this line to link to your CSS file -->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Admin Page - Margate Electronics</title>
+    <link rel="stylesheet" href="style.css"> <!-- Make sure your CSS is linked correctly -->
     <script>
         // Prompt for password when accessing the page
         const password = prompt("Enter password:");
@@ -18,14 +19,23 @@
     </script>
 </head>
 <body>
-    <h1>Welcome to the Admin Page</h1>
-    <p>Content for administrators only.</p>
-    <!-- Admin interface for uploading or managing content can go here -->
-    <form action="upload" method="POST" enctype="multipart/form-data">
-        <label for="file">Upload Audio Set:</label>
-        <input type="file" id="file" name="file" accept="audio/*" required>
-        <br>
-        <button type="submit">Upload</button>
-    </form>
+    <header>
+        <h1>Admin Dashboard</h1>
+        <p>Welcome to the admin page of Margate Electronics.</p>
+    </header>
+
+    <main>
+        <h2>Upload Audio Set</h2>
+        <form action="upload" method="POST" enctype="multipart/form-data">
+            <label for="file">Upload Audio Set:</label>
+            <input type="file" id="file" name="file" accept="audio/*" required>
+            <br><br>
+            <button type="submit">Upload</button>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Margate Electronics</p>
+    </footer>
 </body>
 </html>
