@@ -2,103 +2,87 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Margate Audio Archive</title>
   <link rel="stylesheet" href="style.css" />
   <style>
     body {
       font-family: sans-serif;
-      background: #fff;
       padding: 2rem;
-      max-width: 700px;
-      margin: auto;
+      background: #fff;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
     }
     .track {
       margin-bottom: 3rem;
     }
     .waveform {
-      height: 80px;
-      margin-bottom: 1rem;
+      margin: 1rem 0;
     }
-    .controls {
-      display: flex;
-      gap: 1rem;
-    }
-    button {
+    .controls button {
+      margin-right: 1rem;
       padding: 0.5rem 1rem;
-      border: none;
+      font-size: 1rem;
       background: #000;
       color: #fff;
+      border: none;
       cursor: pointer;
-      border-radius: 4px;
     }
-    button:hover {
-      background: #444;
+    .controls button:hover {
+      background: #333;
     }
   </style>
 </head>
 <body>
-
   <h1>Margate Audio Archive</h1>
 
-  <div class="track" data-src="https://f003.backblazeb2.com/file/archivalrecs/CPB_ME1_4416.mp3">
+  <div class="track">
     <h2>CPB_ME1</h2>
-    <div class="waveform" id="waveform1"></div>
+    <div id="waveform1" class="waveform"></div>
     <div class="controls">
-      <button onclick="playTrack(0)">Play</button>
-      <button onclick="pauseTrack(0)">Pause</button>
+      <button onclick="wavesurfer1.play()">Play</button>
+      <button onclick="wavesurfer1.pause()">Pause</button>
     </div>
   </div>
 
-  <div class="track" data-src="https://f003.backblazeb2.com/file/archivalrecs/TomasJef_ME2_4416.mp3">
+  <div class="track">
     <h2>TomasJef_ME2</h2>
-    <div class="waveform" id="waveform2"></div>
+    <div id="waveform2" class="waveform"></div>
     <div class="controls">
-      <button onclick="playTrack(1)">Play</button>
-      <button onclick="pauseTrack(1)">Pause</button>
+      <button onclick="wavesurfer2.play()">Play</button>
+      <button onclick="wavesurfer2.pause()">Pause</button>
     </div>
   </div>
 
-  <div class="track" data-src="https://f003.backblazeb2.com/file/archivalrecs/KMBN_ME2_4416.mp3">
+  <div class="track">
     <h2>KMBN_ME2</h2>
-    <div class="waveform" id="waveform3"></div>
+    <div id="waveform3" class="waveform"></div>
     <div class="controls">
-      <button onclick="playTrack(2)">Play</button>
-      <button onclick="pauseTrack(2)">Pause</button>
+      <button onclick="wavesurfer3.play()">Play</button>
+      <button onclick="wavesurfer3.pause()">Pause</button>
     </div>
   </div>
 
-  <script src="https://unpkg.com/wavesurfer.js@7"></script>
+  <script src="https://unpkg.com/wavesurfer.js"></script>
   <script>
-    const tracks = document.querySelectorAll('.track');
-    const players = [];
-
-    tracks.forEach((track, index) => {
-      const container = track.querySelector('.waveform');
-      const url = track.dataset.src;
-
-      const ws = WaveSurfer.create({
-        container: container,
+    const createWaveSurfer = (containerId, url) => {
+      return WaveSurfer.create({
+        container: containerId,
         waveColor: '#ccc',
         progressColor: '#000',
-        responsive: true,
         height: 80,
         backend: 'MediaElement',
-        partialRender: true,
-        interact: true,
+        responsive: true,
+        url: url
+        // peaks: [], // You can load peaks here in the future for faster rendering
       });
+    };
 
-      ws.load(url);
-      players.push(ws);
-    });
-
-    function playTrack(index) {
-      players[index].play();
-    }
-
-    function pauseTrack(index) {
-      players[index].pause();
-    }
+    const wavesurfer1 = createWaveSurfer('#waveform1', 'https://f003.backblazeb2.com/file/archivalrecs/CPB_ME1_4416.mp3');
+    const wavesurfer2 = createWaveSurfer('#waveform2', 'https://f003.backblazeb2.com/file/archivalrecs/TomasJef_ME2_4416.mp3');
+    const wavesurfer3 = createWaveSurfer('#waveform3', 'https://f003.backblazeb2.com/file/archivalrecs/KMBN_ME2_4416.mp3');
   </script>
 </body>
 </html>
