@@ -2,91 +2,96 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Margate Audio Archive</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Landing Page Clone</title>
   <style>
+    @import url('index.css');
+
     body {
-      font-family: sans-serif;
+      margin: 0;
+      font-family: "Monument Grotesk Variable", sans-serif;
+      background-color: #fff;
+      color: rgba(0, 0, 0, 0.85);
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       padding: 2rem;
-      background: #fff;
     }
-    h1 {
-      font-size: 2rem;
-      margin-bottom: 2rem;
-      color: #000;
-    }
-     h2 {
-      color: #000;
-    }
-    .track {
-      margin-bottom: 3rem;
-    }
-    .waveform {
+
+    h1, h2 {
       margin: 1rem 0;
     }
-    .controls button {
-      margin-right: 1rem;
-      padding: 0.5rem 1rem;
-      font-size: 1rem;
-      background: #000;
-      color: #fff;
-      border: none;
-      cursor: pointer;
+
+    h1 {
+      font-size: 4.4rem;
+      text-align: center;
     }
-    .controls button:hover {
-      background: #333;
+
+    h2 {
+      font-size: 2.4rem;
+      text-align: center;
+    }
+
+    .media {
+      margin: 2rem 0;
+      max-width: 90vw;
+    }
+
+    .media img {
+      width: 100%;
+      max-height: 60vh;
+      object-fit: contain;
+    }
+
+    .icons {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .icons a {
+      text-decoration: none;
+      color: inherit;
+      font-size: 2rem;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.8rem;
+      }
+
+      h2 {
+        font-size: 1.6rem;
+      }
+
+      .media img {
+        max-height: 40vh;
+      }
+
+      .icons a {
+        font-size: 1.5rem;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>Margate Audio Archive</h1>
-
-  <div class="track">
-    <h2>CPB_ME1</h2>
-    <div id="waveform1" class="waveform"></div>
-    <div class="controls">
-      <button onclick="wavesurfer1.play()">Play</button>
-      <button onclick="wavesurfer1.pause()">Pause</button>
+  <div class="page">
+    <h1>Some Sort of Event</h1>
+    <div class="media">
+      <img src="https://freight.cargo.site/t/original/i/K1136571396250807389219079400028/bl2.gif" alt="Event GIF" />
+    </div>
+    <h2>Like a Thursday at Some Place</h2>
+    <div class="icons">
+      <a href="https://www.instagram.com/cargoworld/" target="_blank">📸</a>
+      <a href="contact-form">✉️</a>
     </div>
   </div>
-
-  <div class="track">
-    <h2>TomasJef_ME2</h2>
-    <div id="waveform2" class="waveform"></div>
-    <div class="controls">
-      <button onclick="wavesurfer2.play()">Play</button>
-      <button onclick="wavesurfer2.pause()">Pause</button>
-    </div>
-  </div>
-
-  <div class="track">
-    <h2>KMBN_ME2</h2>
-    <div id="waveform3" class="waveform"></div>
-    <div class="controls">
-      <button onclick="wavesurfer3.play()">Play</button>
-      <button onclick="wavesurfer3.pause()">Pause</button>
-    </div>
-  </div>
-
-  <script src="https://unpkg.com/wavesurfer.js"></script>
-  <script>
-    const createWaveSurfer = (containerId, url) => {
-      return WaveSurfer.create({
-        container: containerId,
-        waveColor: '#ccc',
-        progressColor: '#000',
-        height: 80,
-        backend: 'MediaElement',
-        responsive: true,
-        url: url
-        // peaks: [], // You can load peaks here in the future for faster rendering
-      });
-    };
-
-    const wavesurfer1 = createWaveSurfer('#waveform1', 'https://f003.backblazeb2.com/file/archivalrecs/CPB_ME1_4416.mp3');
-    const wavesurfer2 = createWaveSurfer('#waveform2', 'https://f003.backblazeb2.com/file/archivalrecs/TomasJef_ME2_4416.mp3');
-    const wavesurfer3 = createWaveSurfer('#waveform3', 'https://f003.backblazeb2.com/file/archivalrecs/KMBN_ME2_4416.mp3');
-  </script>
 </body>
 </html>
