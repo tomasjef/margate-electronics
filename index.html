@@ -1,97 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Landing Page Clone</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Margate Electronics</title>
   <style>
-    @import url('index.css');
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       margin: 0;
-      font-family: "Monument Grotesk Variable", sans-serif;
+      font-family: monospace;
       background-color: #fff;
-      color: rgba(0, 0, 0, 0.85);
+      color: #000;
+      white-space: pre-wrap;
+      padding: 1rem;
+      box-sizing: border-box;
     }
 
-    .page {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 2rem;
-    }
-
-    h1, h2 {
-      margin: 1rem 0;
-    }
-
-    h1 {
-      font-size: 4.4rem;
+    header {
+      padding: 1rem;
       text-align: center;
     }
 
-    h2 {
-      font-size: 2.4rem;
-      text-align: center;
+    .ascii-title {
+      font-size: 0.9rem;
+      line-height: 1.2;
     }
 
-    .media {
-      margin: 2rem 0;
-      max-width: 90vw;
+    .section {
+      margin-bottom: 2rem;
     }
 
-    .media img {
+    .title {
+      font-size: 1.5rem;
+      color: #000;
+    }
+
+    .ascii-box {
+      border: 1px dashed #000;
+      padding: 1rem;
+    }
+
+    a {
+      color: #0000ff;
+    }
+
+    audio {
       width: 100%;
-      max-height: 60vh;
-      object-fit: contain;
+      max-width: 600px;
+      margin-top: 0.5rem;
     }
 
-    .icons {
-      display: flex;
-      gap: 1.5rem;
-      justify-content: center;
-      margin-top: 2rem;
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin-top: 1rem;
     }
 
-    .icons a {
-      text-decoration: none;
-      color: inherit;
-      font-size: 2rem;
-    }
-
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      h1 {
-        font-size: 2.8rem;
-      }
-
-      h2 {
-        font-size: 1.6rem;
-      }
-
-      .media img {
-        max-height: 40vh;
-      }
-
-      .icons a {
-        font-size: 1.5rem;
+    @media (max-width: 600px) {
+      .ascii-box {
+        font-size: 0.8rem;
       }
     }
   </style>
 </head>
 <body>
-  <div class="page">
-    <h1>Some Sort of Event</h1>
-    <div class="media">
-      <img src="https://freight.cargo.site/t/original/i/K1136571396250807389219079400028/bl2.gif" alt="Event GIF" />
+  <header>
+    <div class="ascii-title">
+ +-+-+-+-+-+-+-+ +-+-+-+-+-+-+-+-+-+-+-+
+ |M|a|r|g|a|t|e| |E|l|e|c|t|r|o|n|i|c|s|
+ +-+-+-+-+-+-+-+ +-+-+-+-+-+-+-+-+-+-+-+
     </div>
-    <h2>Like a Thursday at Some Place</h2>
-    <div class="icons">
-      <a href="https://www.instagram.com/cargoworld/" target="_blank">📸</a>
-      <a href="contact-form">✉️</a>
+  </header>
+
+  <div class="section" id="about">
+    <div class="title">ABOUT</div>
+    <div class="ascii-box">
+    This page is styled with old-school ASCII
+    and works on desktop or mobile.
     </div>
   </div>
+
+  <div class="section" id="biog">
+    <div class="title">BIOG</div>
+    <div class="ascii-box">
+      +------------------------+
+      |  Name: ASCII Master    |
+      |  Skills: HTML, ASCII   |
+      |  Hobby: Pixel music    |
+      +------------------------+
+
+    I've been coding with ASCII since the early days.
+    Simplicity is beauty. ASCII is forever.
+    </div>
+  </div>
+
+  <div class="section" id="audio">
+    <div class="title">AUDIO FILES</div>
+    <div class="ascii-box" id="audio-container">
+      _______
+     | Play  |
+     | Music |
+     |_______|
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    (function() {
+      const audioData = [
+        {
+          title: "Chill Beats",
+          description: "A relaxing blend of lo-fi and ambient tones.",
+          image: "audio1.jpg",
+          file: "audio1.mp3"
+        },
+        {
+          title: "Pixel Groove",
+          description: "Retro-inspired chip tunes with a modern twist.",
+          image: "audio2.jpg",
+          file: "audio2.mp3"
+        }
+      ];
+
+      const container = document.getElementById('audio-container');
+
+      audioData.forEach(track => {
+        const div = document.createElement('div');
+        div.innerHTML = `
+          <strong>Title: ${track.title}</strong><br>
+          <em>Description: ${track.description}</em><br>
+          <img src="${track.image}" alt="${track.title} Cover">
+          <audio controls>
+            <source src="${track.file}" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
+        `;
+        container.appendChild(div);
+      });
+    })();
+  </script>
 </body>
 </html>
