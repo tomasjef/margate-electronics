@@ -65,48 +65,44 @@
     <div class="ascii-box">Margate Electronics is a quarterly event launched in 2023 in Margate, UK. Its musical direction explores the intersection of club and experimental electronic sound. Focusing on hardware and concep-driven performances that push creative sonic boundaries.</div></div>
   <div class="section" id="biog">
     <div class="title">Next Event - Friday 13 June</div>
-    <div class="ascii-box">Live: Sculpture, Y Bülbül, Richard Pike
+    <div class="ascii-box">Live performances: Sculpture, Y Bülbül, Richard Pike
 Where: Margate Arts Club
 Date: Friday 13 June
-<a href="https://www.outsavvy.com/event/26885/margate-electronics-8" target="_blank" rel="noopener noreferrer">Book Tickets</a>
-      <img src="https://raw.githubusercontent.com/tomasjef/margate-electronics/main/ME_8_poster_.jpg" alt="Margate Electronics #8 Poster" title="Margate Electronics #8"></div></div>
-
+Book tickets: <a href="https://www.outsavvy.com/event/26885/margate-electronics-8" target="_blank" rel="noopener noreferrer">Buy on Outsavvy</a></div></div>
   <div class="section" id="audio">
     <div class="title">Audio Recordings Archive 2023–2025</div>
     <div class="ascii-box" id="audio-container">
+      Loading audio tracks...
     </div>
   </div>
 
   <script type="text/javascript">
-    (function() {
-      const audioData = [
-        {
-        title: "Chill Beats",
-        description: "A relaxing blend of lo-fi and ambient tones.",
-        file: "audio1.mp3"
-        },
-        {
-          title: "Pixel Groove",
-          description: "Retro-inspired chip tunes with a modern twist.",
-          file: "audio2.mp3"
+    fetch("https://archivalrecs.s3.eu-central-003.backblazeb2.com/tracks.json")
+      .then(res => res.json())
+      .then(audioData => {
+        const container = document.getElementById('audio-container');
+        container.innerHTML = '';
+        if (!audioData.length) {
+          container.innerText = 'No audio tracks found.';
+          return;
         }
-      ];
-
-      const container = document.getElementById('audio-container');
-
-      audioData.forEach(track => {
-        const div = document.createElement('div');
-        div.innerHTML = `
-          <strong>Title: ${track.title}</strong><br>
-          <em>Description: ${track.description}</em><br>
-          <audio controls>
-            <source src="${track.file}" type="audio/mpeg">
-            Your browser does not support the audio element.
-          </audio>
-        `;
-        container.appendChild(div);
+        audioData.forEach(track => {
+          const div = document.createElement('div');
+          div.innerHTML = `
+            <strong>Title: ${track.title}</strong><br>
+            <audio controls>
+              <source src="${track.file}" type="audio/mpeg">
+              Your browser does not support the audio element.
+            </audio>
+          `;
+          container.appendChild(div);
+        });
+      })
+      .catch(error => {
+        const container = document.getElementById('audio-container');
+        container.innerText = '⚠️ Failed to load tracks. Please try again later.';
+        console.error('Error loading tracks:', error);
       });
-    })();
   </script>
 </body>
 </html>
