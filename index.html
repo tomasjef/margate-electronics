@@ -60,8 +60,7 @@
             const div = document.createElement('div');
             div.className = 'track-entry';
             div.innerHTML = `
-              <div class="track-entry-inner"><div class="track-title">${track.title}</div>
-                <audio controls>
+              <div class="track-entry-inner"><div class="track-title">${track.title}</div><audio controls>
                   <source src="${track.file}" type="audio/mpeg">
                   Your browser does not support the audio element.
                 </audio>
