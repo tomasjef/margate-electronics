@@ -42,7 +42,7 @@ audio {
 
 .track-title {
   font-weight: normal;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .track-entry {
@@ -55,6 +55,7 @@ audio {
   display: flex;
   flex-wrap: nowrap;
   gap: 1rem;
+  align-items: center;
   padding: 2rem;
 }
 
@@ -71,13 +72,15 @@ audio {
   display: block;
   width: 100%;
   height: auto;
-  filter: grayscale(100%) contrast(150%) brightness(95%);
   transition: all 0.3s ease;
+  transform: scale(1);
+  box-shadow: 0 0 0 transparent;
 }
-
 .poster:hover {
-  filter: none;
+  filter: brightness(1.05);
+  transform: scale(1.05);
   cursor: zoom-in;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .lightbox {
