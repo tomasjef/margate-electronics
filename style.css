@@ -69,6 +69,7 @@ audio {
   display: flex;
   flex-wrap: nowrap;
   gap: 1rem;
+  align-items: center;
   padding: 2rem;
 }
 
@@ -126,8 +127,7 @@ body.dark {
 
 html.dark .ascii-box, body.dark .ascii-box {
   border-color: #888;
-}}
-
+}
 @media (max-width: 700px) {
   .event-box {
     flex-direction: row;
