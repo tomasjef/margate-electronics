@@ -51,6 +51,11 @@
       margin-top: 1rem;
     }
 
+    .track-title {
+      font-weight: normal;
+      margin-bottom: 0.1rem;
+    }
+
     @media (max-width: 600px) {
     body { padding: 0 2% 0 2%;}
     .ascii-box {
@@ -89,7 +94,7 @@ Book tickets: <a href="https://www.outsavvy.com/event/26885/margate-electronics-
         audioData.forEach(track => {
           const div = document.createElement('div');
           div.innerHTML = `
-            <strong>Title: ${track.title}</strong><br>
+            <div class="track-title">${track.title}</div>
             <audio controls>
               <source src="${track.file}" type="audio/mpeg">
               Your browser does not support the audio element.
