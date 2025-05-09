@@ -1,13 +1,4 @@
-html {
-  background-color: #fff;
-  transition: background-color 0.4s ease;
-}
-
-html.dark {
-  background-color: #000;
-}
-
-body {
+html, body {
   font-family: monospace;
   background-color: #fff;
   color: #000;
@@ -16,7 +7,6 @@ body {
   box-sizing: border-box;
   padding: 2rem;
   margin: 0;
-  transition: background-color 0.4s ease, color 0.4s ease;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -44,10 +34,6 @@ body {
 a {
   color: #0000ff;
   transition: color 0.3s ease;
-}
-
-body.dark a {
-  color: orange;
 }
 
 audio {
@@ -120,14 +106,6 @@ audio {
   opacity: 1;
 }
 
-body.dark {
-  color: #eee;
-  transition: background-color 0.4s ease, color 0.4s ease;
-}
-
-html.dark .ascii-box, body.dark .ascii-box {
-  border-color: #888;
-}
 @media (max-width: 700px) {
   .event-box {
     flex-direction: row;
@@ -143,29 +121,10 @@ html.dark .ascii-box, body.dark .ascii-box {
     padding: 1rem;
   }
   .ascii-box {
-    font-size: 0.8rem;
+    font-size: 1rem;
   }
   .track-entry-inner,
   .track-entry:not(:first-child)::before {
     max-width: 100%;
   }
-}
-
-button[data-theme-toggle] {
-  position: fixed;
-  bottom: 1rem;
-  right: 1rem;
-  padding: 0.5rem 1rem;
-  font-family: monospace;
-  z-index: 2000;
-  background-color: #fff;
-  color: #000;
-  border: 1px solid #ccc;
-  transition: background-color 0.4s ease, color 0.4s ease;
-}
-
-body.dark button[data-theme-toggle] {
-  background-color: #333;
-  color: #fff;
-  border-color: #666;
 }
