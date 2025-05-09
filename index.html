@@ -10,37 +10,28 @@
     }
 
     body {
-      margin: 0;
+      padding: 0 24% 0 24%;
       font-family: monospace;
       background-color: #fff;
       color: #000;
       white-space: pre-wrap;
-      padding: 1rem;
+      line-height: 1.5;
       box-sizing: border-box;
     }
 
-    header {
-      padding: 1rem;
-      text-align: center;
-    }
-
-    .ascii-title {
-      font-size: 0.9rem;
-      line-height: 1.2;
-    }
-
     .section {
-      margin-bottom: 2rem;
+      margin-bottom: 0rem;
     }
 
     .title {
       font-size: 1.5rem;
       color: #000;
+      text-align: center; 
     }
 
     .ascii-box {
       border: 1px dashed #000;
-      padding: 1rem;
+      padding: 2rem;
     }
 
     a {
@@ -61,50 +52,26 @@
     }
 
     @media (max-width: 600px) {
-      .ascii-box {
-        font-size: 0.8rem;
+    body { padding: 0 2% 0 2%;}
+    .ascii-box {
+    font-size: 0.8rem;
       }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="ascii-title">
- +-+-+-+-+-+-+-+ +-+-+-+-+-+-+-+-+-+-+-+
- |M|a|r|g|a|t|e| |E|l|e|c|t|r|o|n|i|c|s|
- +-+-+-+-+-+-+-+ +-+-+-+-+-+-+-+-+-+-+-+
-    </div>
-  </header>
-
   <div class="section" id="about">
-    <div class="title">ABOUT</div>
-    <div class="ascii-box">
-    This page is styled with old-school ASCII
-    and works on desktop or mobile.
-    </div>
-  </div>
-
+    <div class="title">Margate Electronics</div>
+    <div class="ascii-box">Margate Electronics is a quarterly event launched in 2023 in Margate, UK. Its musical direction explores the intersection of club and experimental electronic sound. Focusing on hardware and concep-driven performances that push creative sonic boundaries.</div></div>
   <div class="section" id="biog">
-    <div class="title">BIOG</div>
-    <div class="ascii-box">
-      +------------------------+
-      |  Name: ASCII Master    |
-      |  Skills: HTML, ASCII   |
-      |  Hobby: Pixel music    |
-      +------------------------+
-
-    I've been coding with ASCII since the early days.
-    Simplicity is beauty. ASCII is forever.
-    </div>
-  </div>
-
+    <div class="title">Next Event - Friday 13 June</div>
+    <div class="ascii-box">Live performances: Sculpture, Y Bülbül, Richard Pike
+Where: Margate Arts Club
+Date: Friday 13 June
+Book tickets: </div></div>
   <div class="section" id="audio">
-    <div class="title">AUDIO FILES</div>
+    <div class="title">Audio Recordings Archive 2023–2025</div>
     <div class="ascii-box" id="audio-container">
-      _______
-     | Play  |
-     | Music |
-     |_______|
     </div>
   </div>
 
@@ -112,10 +79,10 @@
     (function() {
       const audioData = [
         {
-          title: "Chill Beats",
-          description: "A relaxing blend of lo-fi and ambient tones.",
-          image: "audio1.jpg",
-          file: "audio1.mp3"
+        title: "Chill Beats",
+        description: "A relaxing blend of lo-fi and ambient tones.",
+        image: "audio1.jpg",
+        file: "audio1.mp3"
         },
         {
           title: "Pixel Groove",
