@@ -6,7 +6,6 @@
   <title>Margate Electronics</title>
   <style>
     html, body {
-      display: block;
       font-family: monospace;
       background-color: #fff;
       color: #000;
@@ -27,13 +26,13 @@
       white-space: pre-wrap;
       line-height: 1.5;
       box-sizing: border-box;
-      padding: 2rem;
     }
 
     .section {
       width: 100%;
       max-width: 800px;
-      margin-bottom: 2rem;
+      margin-top: 0rem;
+      margin-bottom: 0rem;
     }
 
     .title {
@@ -61,7 +60,7 @@
       max-width: 100%;
       height: auto;
       display: block;
-      margin-top: 1rem;
+      margin-top: 0;
     }
 
     .track-title {
@@ -70,22 +69,16 @@
     }
 
     .track-entry {
-      padding-top: 1.2rem;
-      margin-top: 1rem;
-      margin-bottom: 1rem;
+      padding-top: 0;
+      margin-top: 0;
+      margin-bottom: 0;
     }
 
-    .track-entry:not(:first-child)::before {
+     .track-entry:not(:first-child) {
       content: "";
       display: block;
       border-top: 1px dashed #000;
-      margin: 0 auto 1.2rem auto;
-      max-width: 600px;
-    }
-
-    .track-entry-inner {
-      max-width: 600px;
-      margin: 0 auto;
+      margin: 2rem 0 2rem 0;
     }
 
     @media (max-width: 600px) {
@@ -105,29 +98,29 @@
 <body>
   <div class="section" id="about">
     <div class="title">Margate Electronics</div>
-    <div class="ascii-box">
-      Margate Electronics is a quarterly event launched in 2023 in Margate, UK. Its musical direction explores the intersection of club and experimental electronic sound. Focusing on hardware and concept-driven performances that push creative sonic boundaries.
-    </div>
+    <div class="ascii-box">Margate Electronics is a quarterly event launched in 2023 in Margate, UK. Its musical direction explores the intersection of club and experimental electronic sound. Focusing on hardware and concept-driven performances that push creative sonic boundaries.</div>
   </div>
-
+  
   <div class="section" id="biog">
     <div class="title">Next Event - Friday 13 June</div>
-    <div class="ascii-box">
-      Live: Sculpture, Y Bülbül, Richard Pike
-      Date: Friday 13 June
-      Location: Margate Arts Club
-      <a href="https://www.outsavvy.com/event/26885/margate-electronics-8" target="_blank" rel="noopener noreferrer">Book Tickets</a>
-      <img src="https://raw.githubusercontent.com/tomasjef/margate-electronics/main/ME_8_poster_.jpg" alt="Margate Electronics #8 Poster" title="Margate Electronics #8">
-    </div>
+    <div class="ascii-box">Live: <a href="https://plasticinfinite.bandcamp.com" target="_blank">Sculpture</a>, <a href="https://ybulbul.bandcamp.com" target="_blank">Y Bülbül</a>, <a href="https://richardpike.bandcamp.com" target="_blank">Richard Pike</a>
+Date: Friday 13 June
+Location: Margate Arts Club
+<a href="https://www.outsavvy.com/event/26885/margate-electronics-8" target="_blank" rel="noopener noreferrer">Book Tickets</a></div>
   </div>
-
+  
+<div class="section" id="newsletter">
+    <div class="title">Stay in the loop</div>
+    <div class="ascii-box"><a href="https://www.subscribepage.io/margate-electronics-news" target="_blank">Sign up for our Newsletter</a>
+<a href="https://www.instagram.com/margate.electronics/" target="_blank">Follow on Instagram</a></div>
+  </div>
+  
   <div class="section" id="audio">
     <div class="title">Audio Recordings Archive 2023–2025</div>
     <div class="ascii-box" id="audio-container">
       Loading audio tracks...
     </div>
   </div>
-
   <script type="text/javascript">
     fetch("https://archivalrecs.s3.eu-central-003.backblazeb2.com/tracks.json")
       .then(res => res.json())
@@ -147,11 +140,8 @@
               <audio controls>
                 <source src="${track.file}" type="audio/mpeg">
                 Your browser does not support the audio element.
-              </audio>
-            </div>
-          `;
-          container.appendChild(div);
-        });
+              </audio></div>`;
+          container.appendChild(div);});
       })
       .catch(error => {
         const container = document.getElementById('audio-container');
