@@ -16,7 +16,7 @@ html, body {
 
 .title {
   font-size: 1.5rem;
-  color: #000;
+  color: inherit;
   text-align: center;
 }
 
@@ -52,7 +52,7 @@ audio {
 
 .event-box {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 1rem;
   align-items: center;
   padding: 2rem;
@@ -71,14 +71,11 @@ audio {
   display: block;
   width: 100%;
   height: auto;
-  image-rendering: pixelated;
-  background: repeating-conic-gradient(#ccc 0% 25%, #eee 0% 50%) 0 0/4px 4px;
   filter: grayscale(100%) contrast(150%) brightness(95%);
   transition: all 0.3s ease;
 }
 
 .poster:hover {
-  background: none;
   filter: none;
   cursor: zoom-in;
 }
@@ -109,9 +106,9 @@ audio {
 }
 
 body.dark {
-  transition: background-color 0.4s ease, color 0.4s ease;
   background-color: #111;
   color: #eee;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 body.dark .ascii-box {
@@ -123,7 +120,6 @@ body.dark .ascii-box {
     background-color: #111;
     color: #eee;
   }
-
   body:not(.dark) .ascii-box {
     border-color: #888;
   }
@@ -131,12 +127,10 @@ body.dark .ascii-box {
 
 @media (max-width: 700px) {
   .event-box {
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
   }
-
   .event-image {
-    margin-top: 1rem;
     max-width: 100%;
   }
 }
@@ -145,13 +139,30 @@ body.dark .ascii-box {
   body {
     padding: 1rem;
   }
-
   .ascii-box {
     font-size: 0.8rem;
   }
-
   .track-entry-inner,
   .track-entry:not(:first-child)::before {
     max-width: 100%;
   }
+}
+
+button[data-theme-toggle] {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  padding: 0.5rem 1rem;
+  font-family: monospace;
+  z-index: 2000;
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #ccc;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+body.dark button[data-theme-toggle] {
+  background-color: #333;
+  color: #fff;
+  border-color: #666;
 }
