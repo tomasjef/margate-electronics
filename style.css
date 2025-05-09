@@ -110,21 +110,15 @@ audio {
   opacity: 1;
 }
 
-body.dark {
-  background-color: #111;
+html.dark, body.dark {
+  background-color: #000;
   color: #eee;
   transition: background-color 0.4s ease, color 0.4s ease;
 }
 
-body.dark .ascii-box {
+html.dark .ascii-box, body.dark .ascii-box {
   border-color: #888;
-}
-
-
-  body:not(.dark) .ascii-box {
-    border-color: #888;
-  }
-}
+}}
 
 @media (max-width: 700px) {
   .event-box {
