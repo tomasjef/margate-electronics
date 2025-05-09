@@ -1,0 +1,157 @@
+html, body {
+  font-family: monospace;
+  background-color: #fff;
+  color: #000;
+  white-space: pre-wrap;
+  line-height: 1.7;
+  box-sizing: border-box;
+  padding: 2rem;
+  margin: 0;
+}
+
+.section {
+  width: 100%;
+  max-width: 800px;
+}
+
+.title {
+  font-size: 1.5rem;
+  color: #000;
+  text-align: center;
+}
+
+.ascii-box {
+  border: 1px dashed #000;
+  padding: 2rem;
+  margin: 0 auto;
+}
+
+a {
+  color: #0000ff;
+  transition: color 0.3s ease;
+}
+
+body.dark a {
+  color: #8ab4f8;
+}
+
+audio {
+  width: 100%;
+}
+
+.track-title {
+  font-weight: normal;
+  margin-bottom: 1rem;
+}
+
+.track-entry {
+  padding-top: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.event-box {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  padding: 2rem;
+}
+
+.event-text {
+  flex: 3;
+}
+
+.event-image {
+  flex: 1;
+  max-width: 150px;
+}
+
+.poster {
+  display: block;
+  width: 100%;
+  height: auto;
+  image-rendering: pixelated;
+  background: repeating-conic-gradient(#ccc 0% 25%, #eee 0% 50%) 0 0/4px 4px;
+  filter: grayscale(100%) contrast(150%) brightness(95%);
+  transition: all 0.3s ease;
+}
+
+.poster:hover {
+  background: none;
+  filter: none;
+  cursor: zoom-in;
+}
+
+.lightbox {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  box-shadow: 0 0 0px #000;
+}
+
+.lightbox.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+body.dark {
+  transition: background-color 0.4s ease, color 0.4s ease;
+  background-color: #111;
+  color: #eee;
+}
+
+body.dark .ascii-box {
+  border-color: #888;
+}
+
+@media (prefers-color-scheme: dark) {
+  body:not(.dark) {
+    background-color: #111;
+    color: #eee;
+  }
+
+  body:not(.dark) .ascii-box {
+    border-color: #888;
+  }
+}
+
+@media (max-width: 700px) {
+  .event-box {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .event-image {
+    margin-top: 1rem;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 1rem;
+  }
+
+  .ascii-box {
+    font-size: 0.8rem;
+  }
+
+  .track-entry-inner,
+  .track-entry:not(:first-child)::before {
+    max-width: 100%;
+  }
+}
