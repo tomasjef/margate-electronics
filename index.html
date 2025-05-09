@@ -46,21 +46,12 @@
           lightbox.classList.remove('show');
         }
       });
-
-      fetch("https://archivalrecs.s3.eu-central-003.backblazeb2.com/tracks.json")
+fetch("https://archivalrecs.s3.eu-central-003.backblazeb2.com/tracks.json")
         .then(res => res.json())
-        .then(audioData => {
-          const container = document.getElementById('audio-container');
-          container.innerHTML = '';
-          if (!audioData.length) {
-            container.innerText = 'No audio tracks found.';
-            return;
-          }
-          audioData.forEach(track => { const div = document.createElement('div'); div.className = 'track-entry'; div.innerHTML = `
+        .then(audioData => { const container = document.getElementById('audio-container'); container.innerHTML = '';
+          if (!audioData.length) { container.innerText = 'No audio tracks found.'; return;} audioData.forEach(track => { const div = document.createElement('div'); div.className = 'track-entry'; div.innerHTML = `
 <div class="track-entry-inner"><div class="track-title">${track.title}</div><audio controls><source src="${track.file}" type="audio/mpeg">
-                  Your browser does not support the audio element.</audio></div>`;
-            container.appendChild(div);
-          });
+Your browser does not support the audio element.</audio></div>`; container.appendChild(div);});
         })
         .catch(error => {
           const container = document.getElementById('audio-container');
