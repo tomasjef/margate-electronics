@@ -1,4 +1,13 @@
-html, body {
+html {
+  background-color: #fff;
+  transition: background-color 0.4s ease;
+}
+
+html.dark {
+  background-color: #000;
+}
+
+body {
   font-family: monospace;
   background-color: #fff;
   color: #000;
@@ -110,8 +119,7 @@ audio {
   opacity: 1;
 }
 
-html.dark, body.dark {
-  background-color: #000;
+body.dark {
   color: #eee;
   transition: background-color 0.4s ease, color 0.4s ease;
 }
