@@ -5,8 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   const toggle = document.createElement('button');
+  toggle.setAttribute('data-theme-toggle', '');
   toggle.textContent = document.body.classList.contains('dark') ? 'Switch to Light Mode' : 'Switch to Dark Mode';
-  toggle.style = 'position:fixed;bottom:1rem;right:1rem;padding:0.5rem 1rem;font-family:monospace;z-index:2000';
   document.body.appendChild(toggle);
 
   toggle.addEventListener('click', () => {
