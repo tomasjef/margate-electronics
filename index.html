@@ -4,138 +4,100 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Margate Electronics</title>
-  <style>
-    html, body {
-      font-family: monospace;
-      background-color: #fff;
-      color: #000;
-      box-sizing: border-box;
-    }
-
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      font-family: monospace;
-      background-color: #fff;
-      color: #000;
-      white-space: pre-wrap;
-      line-height: 1.7;
-      box-sizing: border-box;
-      padding: 2rem;
-
-    }
-
-    .section {
-      width: 100%;
-      max-width: 800px;
-    }
-
-    .title {
-      font-size: 1.5rem;
-      color: #000;
-      text-align: center;
-    }
-
-    .ascii-box {
-      border: 1px dashed #000;
-      padding: 2rem;
-      margin: 0;
-    }
-
-    a {
-      color: #0000ff;
-    }
-
-    audio {
-      width: 100%;
-    }
-
-    img {
-      max-width: 100%;
-      height: auto;
-      display: block;
-      margin-top: 0;
-    }
-
-    .track-title {
-      font-weight: normal;
-      margin-bottom: 1rem;
-    }
-
-    .track-entry {
-      padding-top: 0;
-      margin-top: 0;
-      margin-bottom: 0;
-    }
-
-     .track-entry:not(:first-child) {
-      content: "";
-      display: block;
-      border-top: 1px dashed #000;
-      margin: 3.3rem 0 3.3rem 0;
-    }
-
-    @media (max-width: 600px) {
-      body {
-        padding: 1rem;
-      }
-      .ascii-box {
-        font-size: 1rem;
-      }
-      .track-entry-inner,
-      .track-entry:not(:first-child)::before {
-        max-width: 100%;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="section" id="about">
     <div class="title">Margate Electronics</div>
-    <div class="ascii-box">Margate Electronics is a quarterly event launched in 2023 in Margate, UK. Its musical direction explores the intersection of club and experimental electronic sound. Focusing on hardware and concept-driven performances that push creative sonic boundaries.</div></div>
-  
-  <div class="section" id="biog">
+    <div class="ascii-box">
+      Margate Electronics is a quarterly event launched in 2023 in Margate, UK. Its musical direction explores the intersection of club and experimental electronic sound. Focusing on hardware and concept-driven performances that push creative sonic boundaries.
+    </div>
+  </div>
+
+  <div class="section" id="event">
     <div class="title">Next Event - Friday 13 June</div>
-    <div class="ascii-box">Live: <a href="https://plasticinfinite.bandcamp.com" target="_blank">Sculpture</a>, <a href="https://ybulbul.bandcamp.com" target="_blank">Y Bülbül</a>, <a href="https://richardpike.bandcamp.com" target="_blank">Richard Pike</a>
-Date: Friday 13 June
-Location: Margate Arts Club
-<a href="https://www.outsavvy.com/event/26885/margate-electronics-8" target="_blank" rel="noopener noreferrer">Book Tickets</a></div></div>
-<div class="section" id="newsletter">
+    <div class="ascii-box event-box">
+      <div class="event-text">
+        Live: <a href="https://plasticinfinite.bandcamp.com" target="_blank">Sculpture</a>,
+        <a href="https://ybulbul.bandcamp.com" target="_blank">Y Bülbül</a>,
+        <a href="https://richardpike.bandcamp.com" target="_blank">Richard Pike</a><br>
+        Date: Friday 13 June<br>
+        Location: Margate Arts Club<br>
+        <a href="https://www.outsavvy.com/event/26885/margate-electronics-8" target="_blank" rel="noopener noreferrer">Book Tickets</a>
+      </div>
+      <div class="event-image">
+        <img src="https://raw.githubusercontent.com/tomasjef/margate-electronics/main/ME_8_poster_.jpg" alt="Margate Electronics #8 Poster" class="poster">
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="newsletter">
     <div class="title">Stay in the loop</div>
-    <div class="ascii-box"><a href="https://www.subscribepage.io/margate-electronics-news" target="_blank">Sign up for our Newsletter</a>
-<a href="https://www.instagram.com/margate.electronics/" target="_blank">Follow on Instagram</a></div></div>
-  
+    <div class="ascii-box">
+      <a href="https://www.subscribepage.io/margate-electronics-news" target="_blank">Sign up for our Newsletter</a><br>
+      <a href="https://www.instagram.com/margate.electronics/" target="_blank">Follow on Instagram</a>
+    </div>
+  </div>
+
   <div class="section" id="audio">
     <div class="title">Audio Recordings Archive 2023–2025</div>
-    <div class="ascii-box" id="audio-container">
-      Loading audio tracks...</div></div>
-  <script type="text/javascript">
-    fetch("https://archivalrecs.s3.eu-central-003.backblazeb2.com/tracks.json")
-      .then(res => res.json())
-      .then(audioData => {
-        const container = document.getElementById('audio-container');
-        container.innerHTML = '';
-        if (!audioData.length) {
-          container.innerText = 'No audio tracks found.';
-          return;
-        }
-        audioData.forEach((track, index) => {
-          const div = document.createElement('div');
-          div.className = 'track-entry';
-          div.innerHTML = `
-            <div class="track-entry-inner"><div class="track-title">${track.title}</div><audio controls>
-                <source src="${track.file}" type="audio/mpeg">
-                Your browser does not support the audio element.
-              </audio></div>`;
-          container.appendChild(div);});
-      })
-      .catch(error => {
-        const container = document.getElementById('audio-container');
-        container.innerText = '⚠️ Failed to load tracks. Please try again later.';
-        console.error('Error loading tracks:', error);
+    <div class="ascii-box" id="audio-container">Loading audio tracks...</div>
+  </div>
+
+  <div id="lightbox" class="lightbox" onclick="this.classList.remove('show')">
+    <img src="https://raw.githubusercontent.com/tomasjef/margate-electronics/main/ME_8_poster_.jpg" alt="Full-size Poster">
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const lightbox = document.getElementById('lightbox');
+
+      document.querySelectorAll('.poster').forEach(img => {
+        const preload = new Image();
+        preload.src = img.src;
+        preload.loading = "eager";
+        img.addEventListener('click', () => {
+          lightbox.querySelector('img').src = img.src;
+          lightbox.classList.add('show');
+        });
       });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && lightbox.classList.contains('show')) {
+          lightbox.classList.remove('show');
+        }
+      });
+
+      fetch("https://archivalrecs.s3.eu-central-003.backblazeb2.com/tracks.json")
+        .then(res => res.json())
+        .then(audioData => {
+          const container = document.getElementById('audio-container');
+          container.innerHTML = '';
+          if (!audioData.length) {
+            container.innerText = 'No audio tracks found.';
+            return;
+          }
+          audioData.forEach(track => {
+            const div = document.createElement('div');
+            div.className = 'track-entry';
+            div.innerHTML = `
+              <div class="track-entry-inner">
+                <div class="track-title">${track.title}</div>
+                <audio controls>
+                  <source src="${track.file}" type="audio/mpeg">
+                  Your browser does not support the audio element.
+                </audio>
+              </div>`;
+            container.appendChild(div);
+          });
+        })
+        .catch(error => {
+          const container = document.getElementById('audio-container');
+          container.innerText = '⚠️ Failed to load tracks. Please try again later.';
+          console.error('Error loading tracks:', error);
+        });
+    });
   </script>
+  <script src="theme.js" defer onerror="console.warn('⚠️ Failed to load theme.js – Dark mode toggle unavailable.')"></script>
 </body>
 </html>
