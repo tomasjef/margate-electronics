@@ -60,6 +60,7 @@ audio {
 
 .event-text {
   flex: 3;
+  padding-bottom: 2rem;
 }
 
 .event-image {
