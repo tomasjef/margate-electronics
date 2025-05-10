@@ -120,7 +120,7 @@ audio {
 
 @media (max-width: 600px) {
   body {
-    padding: 0.3rem;
+    padding: 0.2rem;
   }
   .ascii-box {
     font-size: 1rem;
