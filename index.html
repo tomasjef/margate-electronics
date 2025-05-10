@@ -12,7 +12,7 @@
   </div>
 
   <div class="section" id="event"><div class="title">Next Event - Friday 13 June</div>
-  <div class="ascii-box event-box"><div class="event-text">Live: <a href="https://plasticinfinite.bandcamp.com" target="_blank">Sculpture</a>, <a href="https://ybulbul.bandcamp.com" target="_blank">Y Bülbül</a>, <a href="https://richardpike.bandcamp.com" target="_blank">Richard Pike</a><br>Date: Friday 13 June<br>Location: Margate Arts Club<br><a href="https://www.outsavvy.com/event/26885/margate-electronics-8" target="_blank" rel="noopener noreferrer">Book Tickets</a>
+  <div class="ascii-box event-box"><div class="event-text">Live:<br><a href="https://plasticinfinite.bandcamp.com" target="_blank">Sculpture</a>, <a href="https://ybulbul.bandcamp.com" target="_blank">Y Bülbül</a>, <a href="https://richardpike.bandcamp.com" target="_blank">Richard Pike</a><br>Date: Friday 13 June<br>Location: Margate Arts Club<br><a href="https://www.outsavvy.com/event/26885/margate-electronics-8" target="_blank" rel="noopener noreferrer">Book Tickets</a>
 </div><div class="event-image"><img src="https://raw.githubusercontent.com/tomasjef/margate-electronics/main/ME_8_poster_.jpg" alt="Margate Electronics #8 Poster" class="poster"></div></div>
   </div>
 
@@ -26,13 +26,7 @@
     <img src="https://raw.githubusercontent.com/tomasjef/margate-electronics/main/ME_8_poster_.jpg" alt="Full-size Poster">
   </div>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const lightbox = document.getElementById('lightbox');
-      document.querySelectorAll('.poster').forEach(img => {
-        const preload = new Image();
-        preload.src = img.src;
-        preload.loading = "eager";
+<script>document.addEventListener('DOMContentLoaded', function () { const lightbox = document.getElementById('lightbox'); document.querySelectorAll('.poster').forEach(img => { const preload = new Image(); preload.src = img.src; preload.loading = "eager";
 img.addEventListener('click', () => { lightbox.querySelector('img').src = img.src; lightbox.classList.add('show');});}); document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && lightbox.classList.contains('show')) {lightbox.classList.remove('show');}});
 fetch("https://archivalrecs.s3.eu-central-003.backblazeb2.com/tracks.json").then(res => res.json()) .then(audioData => { const container = document.getElementById('audio-container'); container.innerHTML = '';
 if (!audioData.length) { container.innerText = 'No audio tracks found.'; return;} audioData.forEach(track => { const div = document.createElement('div'); div.className = 'track-entry'; div.innerHTML = `
@@ -41,7 +35,6 @@ Your browser does not support the audio element.</audio></div>`; container.appen
         .catch(error => {
           const container = document.getElementById('audio-container');
           container.innerText = '⚠️ Failed to load tracks. Please try again later.';
-          console.error('Error loading tracks:', error);});});
-  </script>
+          console.error('Error loading tracks:', error);});});</script>
 </body>
 </html>
