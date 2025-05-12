@@ -20,16 +20,54 @@
   <div class="ascii-box"><a href="https://www.subscribepage.io/margate-electronics-news" target="_blank">Sign up for our Newsletter</a><br><a href="https://www.instagram.com/margate.electronics/" target="_blank">Follow on Instagram</a></div>
   </div>
 
-  <div class="section" id="audio"><div class="title">Audio Recordings 2023–2025</div>
-  <div class="ascii-box" id="audio-container">Loading audio tracks...</div></div><div id="lightbox" class="lightbox" onclick="this.classList.remove('show')">
-<img src="https://raw.githubusercontent.com/tomasjef/margate-electronics/main/ME_8_poster_.jpg" alt="Full-size Poster"></div>
-<script>document.addEventListener('DOMContentLoaded', function () { const lightbox = document.getElementById('lightbox');
-document.querySelectorAll('.poster').forEach(img => { const preload = new Image();preload.src = img.src; preload.loading = "eager";
-img.addEventListener('click', () => { lightbox.querySelector('img').src = img.src; lightbox.classList.add('show');});}); document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && lightbox.classList.contains('show')) {lightbox.classList.remove('show');}});
+  <div class="section" id="audio">
+    <div class="title">Audio Recordings 2023–2025</div>
+    <div class="ascii-box" id="audio-container">Loading audio tracks...</div>
+  </div>
+  <div id="lightbox" class="lightbox" onclick="this.classList.remove('show')">
+    <img src="https://raw.githubusercontent.com/tomasjef/margate-electronics/main/ME_8_poster_.jpg" alt="Full-size Poster">
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const lightbox = document.getElementById('lightbox');
+      document.querySelectorAll('.poster').forEach(img => {
+        const preload = new Image();
+        preload.src = img.src;
+        preload.loading = "eager";
+        img.addEventListener('click', () => {
+          lightbox.querySelector('img').src = img.src;
+          lightbox.classList.add('show');
+        });
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && lightbox.classList.contains('show')) {
+          lightbox.classList.remove('show');
+        }
+      });
 
-fetch("https://archivalrecs.s3.eu-central-003.backblazeb2.com/tracks.json").then(res => res.json()) .then(audioData => { const container = document.getElementById('audio-container'); container.innerHTML = '';
-if (!audioData.length) { container.innerText = 'No audio tracks found.'; return;} audioData.forEach(track => { const div = document.createElement('div'); div.className = 'track-entry'; div.innerHTML = `
-<div class="track-entry-inner"><div class="track-title">${track.title}</div><audio controls><source src="${track.file}" type="audio/mpeg">Your browser does not support the audio element.</audio></div>`; container.appendChild(div);});})
-.catch(error => { const container = document.getElementById('audio-container'); container.innerText = '⚠️ Failed to load tracks. Please try again later.'; console.error('Error loading tracks:', error);});});</script>
+      fetch("https://archivalrecs.s3.eu-central-003.backblazeb2.com/tracks.json")
+        .then(res => res.json())
+        .then(audioData => {
+          const container = document.getElementById('audio-container');
+          container.innerHTML = '';
+          if (!audioData.length) {
+            container.innerText = 'No audio tracks found.';
+            return;
+          }
+          audioData.forEach(track => {
+            const div = document.createElement('div');
+            div.className = 'track-entry';
+            div.innerHTML = `
+<div class="track-entry-inner"><div class="track-title">${track.title}</div><audio controls><source src="${track.file}" type="audio/mpeg">Your browser does not support the audio element.</audio></div>`;
+            container.appendChild(div);
+          });
+        })
+        .catch(error => {
+          const container = document.getElementById('audio-container');
+          container.innerText = '⚠️ Failed to load tracks. Please try again later.';
+          console.error('Error loading tracks:', error);
+        });
+    });
+  </script>
 </body>
 </html>
