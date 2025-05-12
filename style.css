@@ -2,7 +2,7 @@ html, body {
   font-family: monospace;
   background-color: #fff;
   color: #000;
-  white-space: pre-wrap;
+  white-space: normal;
   line-height: 1.7;
   box-sizing: border-box;
   padding: 2rem;
@@ -42,24 +42,25 @@ audio {
 
 .track-title {
   font-weight: normal;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .track-entry {
-  padding: 0;
-  margin: 0;
+  padding-top: 0;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .event-box {
   display: flex;
   flex-wrap: nowrap;
   gap: 1rem;
+  align-items: center;
   padding: 2rem;
 }
 
 .event-text {
   flex: 3;
-  padding-bottom: 2rem;
 }
 
 .event-image {
@@ -109,20 +110,20 @@ audio {
 }
 
 @media (max-width: 700px) {
-    body {
-    padding: 0;
   .event-box {
     flex-direction: column;
     align-items: flex-start;
+    row-gap: 1.5rem;
   }
   .event-image {
     max-width: 100%;
+    margin-top: 1rem;
   }
 }
 
 @media (max-width: 600px) {
   body {
-    padding: 0;
+    padding: 0.3rem;
   }
   .ascii-box {
     font-size: 1rem;
@@ -131,5 +132,4 @@ audio {
   .track-entry:not(:first-child)::before {
     max-width: 100%;
   }
-}
 }
