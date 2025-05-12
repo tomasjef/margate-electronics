@@ -23,6 +23,8 @@ html, body {
   font-size: 1.5rem;
   color: inherit;
   text-align: center;
+  padding-bottom:2rem;
+  pading-top: 2rem;
 }
 
 .ascii-box {
@@ -61,7 +63,6 @@ audio {
   display: flex;
   flex-wrap: nowrap;
   gap: 1rem;
-  align-items: center;
   padding: 2rem;
 }
 
