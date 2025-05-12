@@ -60,7 +60,7 @@
             div.innerHTML = `
   <div class="track-entry-inner">
     <div class="track-title">${track.title}</div>
-    <audio controls controlsList="nodownload">
+    <audio controls controlsList="nodownload noplaybackrate nofullscreen">
       <source src="${track.file}" type="audio/mpeg">
       Your browser does not support the audio element.
     </audio>
