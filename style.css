@@ -51,6 +51,12 @@ audio {
   margin-bottom: 0;
 }
 
+.track-entry:not(:first-child) {
+  border-top: 1px dashed #000;
+  margin-top: 2rem;
+  padding-top: 2rem;
+}
+
 .event-box {
   display: flex;
   flex-wrap: nowrap;
