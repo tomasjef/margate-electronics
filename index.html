@@ -17,21 +17,15 @@
   </div>
 
 <div class="section" id="newsletter"><div class="title">Buy T-Shirt</div>
-  <div class="ascii-box">Limited Edition T-shirt<br>Pre-order now, collect at event or choose shipping<br>
-  <button
-    class="snipcart-add-item"
-    data-item-id="shirt001"
-    data-item-name="Limited T-shirt"
-    data-item-price="25.00"
-    data-item-url="/"
-    data-item-description="Pre-order limited shirt"
-    data-item-custom1-name="Size"
-    data-item-custom1-options="S|M|L|XL"
-    data-item-custom2-name="Delivery"
-    data-item-custom2-options="Shipping|Collect at Event"
-  >
-    Order Now
-  </button>
+  <div class="ascii-box">Limited Edition T-shirt<br>Pre-order now, collect at event or choose shipping<br><br><script async
+  src="https://js.stripe.com/v3/buy-button.js">
+</script>
+
+<stripe-buy-button
+  buy-button-id="buy_btn_1RP7Z6B1dOpXRytupcTfIqz8"
+  publishable-key="pk_live_51ROaf4B1dOpXRytu3gbOXM63zZrKHfIp3eDJQ2sm9GAQg0Wu1JIWNrynHHRhsOlMu89ixOQkQkinMlqmeCHJLI9700b43BBC1h"
+>
+</stripe-buy-button>
   </div>
   
   <div class="section" id="newsletter"><div class="title">Stay in the loop</div>
@@ -93,14 +87,5 @@
         });
     });
   </script>
-<!-- Snipcart stylesheet -->
-<link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.6.0/default/snipcart.css" />
-
-<!-- Snipcart script -->
-<script async src="https://cdn.snipcart.com/themes/v3.6.0/default/snipcart.js"></script>
-
-<!-- Your API Key -->
-<div hidden id="snipcart" data-api-key="MDBmYmUyZGMtYjAzYy00MDJmLWJlM2QtYjE0ZmQ4NTQwZjE4NjM4ODMyODExNDQ0MTExMjI2
-"></div>
 </body>
 </html>
